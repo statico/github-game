@@ -10,6 +10,7 @@
     "jimp": "^0.14.0",
     "moment": "^2.27.0",
     "moment-timezone": "^0.5.31",
-    "shelljs": "^0.8.4"
+    "shelljs": "^0.8.4",
+    "tmp": "^0.2.1"
   }
 }
