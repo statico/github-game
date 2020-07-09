@@ -43,6 +43,7 @@ const main = async () => {
 
   const stream = fs.createWriteStream(tmp.tmpNameSync())
   console.log(`Writing git fast-import file to ${stream.path}`)
+
   const name = shell.exec('git config user.name').stdout.trim()
   const email = shell.exec('git config user.email').stdout.trim()
 
