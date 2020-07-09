@@ -83,7 +83,7 @@ const main = async () => {
         stream.write(`mark :${commitMark}\n`)
         stream.write(`author ${name} <${email}> ${now} +0000\n`)
         stream.write(`committer ${name} <${email}> ${now} +0000\n`)
-        stream.write(`data 0\n`)
+        stream.write(`data 4\nYOLO\n`)
         if (commitMark > 2) {
           stream.write(`from :${commitMark - 2}\n`)
         }
