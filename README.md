@@ -26,6 +26,7 @@ So I made this.
 - Include private contributions in your [GitHub settings](https://github.com/settings/profile) to up your green square game
 - Make a private repo on GitHub to hide your secrets
 - Run `node index.js image.png ~/game git@github.com:yourname/yourrepo.git` and git push force origin
+- Wait [24 hours or something](https://docs.github.com/en/github/setting-up-and-managing-your-github-profile/why-are-my-contributions-not-showing-up-on-my-profile#commit-was-made-less-than-24-hours-ago)
 - Bask in the glory of your new resume-crushing GitHub profile
 
 ## Huh?
