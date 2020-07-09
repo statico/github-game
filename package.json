@@ -1,0 +1,15 @@
+{
+  "name": "github-game",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:statico/github-game.git",
+  "author": "Ian Langworth <ian@langworth.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "jimp": "^0.14.0",
+    "moment": "^2.27.0",
+    "moment-timezone": "^0.5.31",
+    "shelljs": "^0.8.4"
+  }
+}
