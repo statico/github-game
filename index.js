@@ -4,11 +4,10 @@ const moment = require('moment-timezone')
 const shell = require('shelljs')
 const tmp = require('tmp')
 
+const MAX_COMMITS = Number(process.env.MAX_COMMITS || 75)
+
 const WIDTH = 53
 const HEIGHT = 7
-const MIN_COMMITS = 0
-const MAX_COMMITS = 100
-const LINES_PER_COMMIT = 100
 
 tmp.setGracefulCleanup()
 shell.set('-e')
@@ -33,7 +32,7 @@ const main = async () => {
   let image
   try {
     image = await jimp.read(imagePath)
-    image.grayscale()
+    image.grayscale().invert()
   } catch (err) {
     throw new Error(`Could not read ${imagePath}: ${err}`)
   }
@@ -48,7 +47,12 @@ const main = async () => {
   const email = shell.exec('git config user.email').stdout.trim()
 
   const today = moment().tz('UTC')
-  const start = moment(today).subtract(52, 'weeks').startOf('week')
+  const start = moment(today)
+    .subtract(52, 'weeks')
+    .startOf('week')
+    .hour(12)
+    .minute(0)
+    .seconds(0)
 
   let mark = 1
   stream.write(`reset refs/heads/master\n\n`)
@@ -61,34 +65,21 @@ const main = async () => {
       }
 
       const value = (image.getPixelColor(x, y) >>> 24) / 255
-      const numCommits = Math.floor(
-        MIN_COMMITS * (1 - value) + MAX_COMMITS * value
-      )
+      const numCommits = Math.floor(MAX_COMMITS * value)
+      console.log(`${day.format('LL')}: ${numCommits} commits`)
 
       for (let i = 0; i < numCommits; i++) {
-        const content = Buffer.from(
-          new Array(LINES_PER_COMMIT).fill(0).map(Math.random).join('\n'),
-          'utf8'
-        )
-
-        const blobMark = mark++
-        const commitMark = mark++
-        const now = day.unix() + i
-        stream.write(`blob\n`)
-        stream.write(`mark :${blobMark}\n`)
-        stream.write(`data ${content.byteLength}\n`)
-        stream.write(content)
-        stream.write(`\n`)
+        const now = day.unix()
         stream.write(`commit refs/heads/master\n`)
-        stream.write(`mark :${commitMark}\n`)
+        stream.write(`mark :${mark}\n`)
         stream.write(`author ${name} <${email}> ${now} +0000\n`)
         stream.write(`committer ${name} <${email}> ${now} +0000\n`)
-        stream.write(`data 4\nYOLO\n`)
-        if (commitMark > 2) {
-          stream.write(`from :${commitMark - 2}\n`)
+        stream.write(`data 0\n`)
+        if (mark > 1) {
+          stream.write(`from :${mark - 1}\n`)
         }
-        stream.write(`M 100644 :${blobMark} data\n`)
         stream.write(`\n`)
+        mark++
       }
     }
   }
