@@ -20,7 +20,7 @@ So I made this.
 
 ## How?
 
-- Make a 53x7 of whatever you want
+- Make a 53x7 image of whatever you want
 - Node.js v12 or later or something I don't know
 - `yarn install`
 - Include private contributions in your [GitHub settings](https://github.com/settings/profile) to up your green square game

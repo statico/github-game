@@ -48,7 +48,7 @@ const main = async () => {
 
   const today = moment().tz('UTC')
   const start = moment(today)
-    .subtract(52, 'weeks')
+    .subtract(WIDTH + 1, 'weeks')
     .startOf('week')
     .hour(12)
     .minute(0)
