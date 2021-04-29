@@ -55,7 +55,7 @@ const main = async () => {
     .seconds(0)
 
   let mark = 1
-  stream.write(`reset refs/heads/master\n\n`)
+  stream.write(`reset refs/heads/main\n\n`)
 
   for (let x = 0; x < WIDTH; x++) {
     for (let y = 0; y < HEIGHT; y++) {
@@ -70,7 +70,7 @@ const main = async () => {
 
       for (let i = 0; i < numCommits; i++) {
         const now = day.unix()
-        stream.write(`commit refs/heads/master\n`)
+        stream.write(`commit refs/heads/main\n`)
         stream.write(`mark :${mark}\n`)
         stream.write(`author ${name} <${email}> ${now} +0000\n`)
         stream.write(`committer ${name} <${email}> ${now} +0000\n`)
