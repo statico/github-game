@@ -10,7 +10,7 @@ Works with GitLab, too. Just tell them it's like GitHub with blue squares.
 
 Because I saw and shared [this](https://twitter.com/EmilyKager/status/1277983791190085632):
 
-[<img width="500" alt="Tweet from Emily Kager" src="https://user-images.githubusercontent.com/137158/87092363-22e58380-c1f0-11ea-9df0-04974a6abfd9.png">](https://twitter.com/EmilyKager/status/1277983791190085632)
+[<img width="500" alt="Tweet from Emily Kager" src="https://user-images.githubusercontent.com/137158/211115198-7d623f02-0110-4611-baa2-77633fe46f8b.png">](https://twitter.com/EmilyKager/status/1277983791190085632)
 
 And [@PeteMarkowsky](https://twitter.com/PeteMarkowsky) was like:
 
